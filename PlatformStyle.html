@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="short icon" href="Resource/icon.png">
+    <title>华杉科技实训项目</title>
+    <link rel="stylesheet" href="ExternalStyle.css">
+    <script type="text/javascript" src="CommonClass.js"></script>
+    <style>
+        img{
+            width: 100%;
+        }
+        article{
+            margin: 20px;
+        }
+        h3{
+            font-size: 18px;
+            color: red;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dddddd;/*线*/
+        }
+        h4{
+            font-size: 14px;
+        }
+        article p{
+            font-size: 12px;
+            text-indent: 2em;/*首行缩进*/
+            line-height: 2em;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <!--搬少量文字的标签-->
+    <span>平台风采</span>
+</header>
+
+<section>
+    <!--加载图片的标签。alter提示-->
+    <img src="Resource/banner4.png" alt="">
+</section>
+<article>
+    <h3 id="title"></h3>
+    <h4 id="subTitle"></h4>
+    <p id="info"></p>
+</article>
+
+    <!--<h3>公司简介</h3>-->
+    <!--<h4> 华杉科技(北京)有限公司</h4>-->
+    <!--<p> 华杉科技(北京)有限公司-直秉承“在高薪和经验的路上，我们只做行业第一” ，致力于为整个互联网科技行业输送高级技术人才、做好每一款外包项目。</p>-->
+    <!--<p> 华杉科技(北京)有限公司是-家既专注于培养高级IT技术人才，为学员提供定制化IT职业规划方案及意见咨询服务，又是国内领先的智能手机软件外包服务商。公司原东方爱智技术总监，原58同城技术总监共同创立。</p>-->
+    <!--<p> 华杉科技(北京)有限公司拥有业内知名的教研团队和雄厚的课程研发能力，课程的快速迭代时刻紧跟当今较为流行的前沿技术、不同行业的外包项目作为支撑，强有力的保证了学员的核心竞争力。强竞争力的一线技术人员和完善的外包服务流程充分保证了每一款项目的顺利执行。</p>-->
+
+
+    <script>
+
+        RequsetMethod('get','aboutus','',function (returnback) {
+            var title_content = document.getElementById("title");
+            var subTitle_content = document.getElementById("subTitle");
+            var info_content = document.getElementById("info");
+            //alert(returnback);
+             title_content.innerHTML = returnback.title;
+             subTitle_content.innerHTML = returnback.subTitle;
+             info_content.innerHTML = returnback.info;
+        }) ;
+
+
+        // //第一步：创建请求对旬xhr
+        // var xhr = new XMLHttpRequest();
+        // //第二步：建立与服务器端的连接（get/post）
+        // xhr.open('get','https://mockapi.eolinker.com/2ZhGVxjacb39010e6753bd9c02ee803e6e3bfeab6e8007c/aboutus');
+        // //设置头信息，让数据以表单的形式传递给服务器
+        // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        // //第三步，发送请求
+        // xhr.send();
+        // //第四步，接收服务端返回的数据
+        // xhr.onreadystatechange = function () {
+        //     //readyState == 4代表ajax数据请求已经完成
+        //     //status == 200 表示数据成功返回
+        //     if (xhr.readyState == 4 && xhr.status == 200) {
+        //         //responseText中包含了服务端返回的数据
+        //         var res = JSON.parse(xhr.responseText);
+        //         var title_content = document.getElementById("title");
+        //         var subTitle_content = document.getElementById("subTitle");
+        //         var info_content = document.getElementById("info");
+        //         title_content.innerHTML = res.data.title;
+        //         subTitle_content.innerHTML = res.data.subTitle;
+        //         info_content.innerHTML = res.data.info;
+        //     }
+        // }
+    </script>
+
+
+<footer>
+    <a href="DropleService.html"><img src="Resource/nav10.png" alt=""><span>小滴服务</span></a>
+    <a href="EntrepreneurshipProject_One.html"><img src="Resource/nav20.png" alt=""><span>项目企业</span></a>
+    <a href="ServiceProcess.html"><img src="Resource/nav30.png" alt=""><span>服务流程</span></a>
+    <a href="PlatformStyle.html"><img src="Resource/nav41.png" alt=""><span style="color: red">平台风格</span></a>
+    <a href="MyDrople.html"><img src="Resource/nav50.png" alt=""><span>我的小滴</span></a>
+</footer>
+</body>
+</html>
+

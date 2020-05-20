@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <!--用来链接外部资源用的-->
+    <!--相对路径，绝对路径-->
+    <!--网页头部-->
+    <link rel="short icon" href="Resource/icon.png">
+    <link rel="stylesheet" href="ExternalStyle.css">
+    <script  type="text/javascript" src="CommonClass.js"></script>
+    <title>华杉科技实训项目</title>
+    <style>
+        .L_first_div{
+            position: relative;
+            width: 100%;
+            height: 170px;
+        }
+        .L_second_div{
+            top: 50%;
+            left: 50%;
+            width: 44px;
+            height: 60px;
+            margin-left: -22px;
+            margin-top: -30px;
+            position: absolute;
+
+        }
+        .L_form_div{
+            width: 100%;
+            /*margin-top: 170px;*/
+        }
+        .L_form_inner_div{
+            background: white;
+            width: 90%;
+            border: 1px solid #cccccc;
+            margin: 0 auto;
+            border-radius: 5px;
+            height: 100px;
+        }
+        .L_form_inner_div div{
+            height: 50px;
+            border-bottom: 1px solid #cccccc;
+        }
+        .L_form_inner_div div span{
+            padding-left: 15px;
+            font-size: 20px;
+            line-height: 50px;
+        }
+        input{
+            border: none;
+            height: 20px;
+              outline: medium;/*去表格的边框*/
+          }
+        .L_external_login_div{
+            width: 100%;
+        }
+        .L_login_div{
+            width:90%;
+            margin: 20px auto;
+            height: 50px;
+            background: rgb(36,96,161);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .L_login_div input {
+            color: white;
+            font-size: 20px;
+            line-height: 50px;
+            height: 50px;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <!--搬少量文字的标签-->
+    <span>登录</span>
+</header>
+
+<div class="L_first_div">
+    <div class="L_second_div">
+        <img src="Resource/head.png" alt="">
+    </div>
+</div>
+
+<form action="">
+<div class="L_form_div">
+    <div class="L_form_inner_div">
+        <div>
+            <span>用户名:</span>
+            <input type="text" id="L_account"><br>
+        </div>
+        <div>
+            <span>密码:</span>
+            <input type="password" id="L_pwd"><br>
+        </div>
+    </div>
+</div>
+<div class="L_external_login_div">
+    <div class="L_login_div">
+        <input type="button" value="登录" id="L_btn">
+    </div>
+</div>
+
+</form>
+
+<script>
+    var btn=document.querySelector("#L_btn");
+    btn.onclick=function () {
+        var userName= encodeURIComponent(document.querySelector("#L_account").value);//拿到里面的值
+        var password= encodeURIComponent(document.querySelector("#L_pwd").value);//拿到里面的值
+
+        var part="username="+userName+"&pwd="+password;
+        RequsetMethod('post','login',part,function (returnback){
+            if(returnback=="登录成功"){
+                location.href="DropleService.html";
+            }else{
+                alert(returnback);
+            }
+        });
+        // // 第一步：创建请求对象 xhr
+        // var xhr = new XMLHttpRequest();
+        // // 第二步：建立与服务器的连接（get/post）；
+        // xhr.open('post','https://mockapi.eolinker.com/2ZhGVxjacb39010e6753bd9c02ee803e6e3bfeab6e8007c/login');
+        // //设置头信息，让数据以表单的的形式传递给服务器
+        // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        // //第三步发送请求
+        // xhr.send("username="+userName+"&pwd="+password);
+        // //第四步 接受服务器端返回的数据
+        // xhr.onreadystatechange=function ( ) {
+        //     //xhr.readyState==4代表ajax数据请求完成
+        //     //xhr.status==200 表示数据成功返回
+        //     if(xhr.readyState==4&&xhr.status==200){
+        //         //responseText中包含了服务端返回的数据
+        //         var res=JSON.parse(xhr.responseText);
+        //         var str =res.data;
+        //
+        //         if(str=="登录成功"){
+        //             location.href="DropleService.html";
+        //         }else{
+        //             alert(str);
+        //         }
+        //     }
+        // }
+
+        // if(account=="rjxy"&&password=="123"){
+        //     window.location.href="DropleService.html";//进行跳转
+        // }else{
+        //     alert("输入错误");
+        //     // Window.location.href=""
+        // }
+    };
+</script>
+</body>
+</html>
